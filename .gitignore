@@ -1,0 +1,38 @@
+# =====================
+# ENV FILE
+# =====================
+.env
+*.env
+
+# =====================
+# FLUTTER (Frontend)
+# =====================
+Frontend/.dart_tool/
+Frontend/.packages
+Frontend/.flutter-plugins
+Frontend/.flutter-plugins-dependencies
+Frontend/build/
+Frontend/.idea/
+Frontend/.vscode/
+
+# =====================
+# PYTHON / FASTAPI (Backend)
+# =====================
+Backend/__pycache__/
+Backend/*.pyc
+Backend/.venv/
+Backend/env/
+Backend/venv/
+Backend/.env
+
+# =====================
+# OS FILE
+# =====================
+.DS_Store
+Thumbs.db
+
+# =====================
+# IDE
+# =====================
+.vscode/
+.idea/
