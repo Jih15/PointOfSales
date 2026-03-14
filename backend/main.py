@@ -10,7 +10,7 @@ from slowapi.errors import RateLimitExceeded
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 
-from app.core.security.security_config import ALLOWED_ORIGINS, IS_PRODUCTION
+from app.core.security.security_config import ALLOWED_ORIGINS, IS_PRODUCTION, ALLOWED_HOSTS
 from app.core.security.middleware import (
     SecurityHeadersMiddleware,
     RequestLoggingMiddleware,
@@ -52,12 +52,12 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
-    allow_method=["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE"],
     allow_headers=["Authorization","Content-Type"],
 )
 app.add_middleware(
     TrustedHostMiddleware,
-    allowed_hosts=["localhost","127.0.0.1"]
+    allowed_hosts=ALLOWED_HOSTS
 )
 
 app.include_router(api_router)

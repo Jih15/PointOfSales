@@ -72,7 +72,7 @@ class BodySizeLimitMiddleware(BaseHTTPMiddleware):
         if content_length and int(content_length) > MAX_BODY_SIZE_BYTES:
             return JSONResponse(
                 status_code=413,
-                content={"detail":"Request body too bigger."}
+                content={"detail":"Request body too large."}
             )
         
         return await call_next(request)

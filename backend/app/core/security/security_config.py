@@ -17,6 +17,8 @@ ALLOWED_ORIGINS: List[str] = os.getenv(
     "http://localhost:3000, http://localhost:8080"
 ).split(",")
 
+ALLOWED_HOSTS: List[str] = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+
 # Rate Limiting Config
 RATE_LIMIT_CREATE: str = os.getenv("RATE_LIMIT_CREATE", "10/minute")
 RATE_LIMIT_READ: str = os.getenv("RATE_LIMIT_READ", "60/minute")
