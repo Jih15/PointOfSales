@@ -74,7 +74,7 @@ def create_user(db: Session, payload: UserCreate)-> User:
         password  = hash_password(payload.password),
         is_active = True, 
     )
-    db.add(User)
+    db.add(user)
     db.flush()
 
     d = payload.detail
@@ -89,8 +89,8 @@ def create_user(db: Session, payload: UserCreate)-> User:
     db.add(detail)
 
     db.commit()
-    db.refresh(User)
-    return User
+    db.refresh(user)
+    return user
 
 def update_user(db: Session, user_id: int, payload: UserUpdate) -> User:
     user = _get_user_or_404(db, user_id)
@@ -110,8 +110,8 @@ def update_user(db: Session, user_id: int, payload: UserUpdate) -> User:
         user.is_active = payload.is_active
 
     db.commit()
-    db.refresh(User)
-    return User
+    db.refresh(user)
+    return user
 
 def soft_delete_user(db: Session, user_id: int) -> dict:
     user = _get_user_or_404(db, user_id)
