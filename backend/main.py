@@ -4,13 +4,12 @@ load_dotenv()
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
-from slowapi import Limiter, _rate_limit_exceeded_handler
-from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 
-from app.core.security.security_config import ALLOWED_ORIGINS, IS_PRODUCTION, ALLOWED_HOSTS
+from app.core.config.security_config import ALLOWED_ORIGINS, IS_PRODUCTION, ALLOWED_HOSTS
+from app.core.security.limiter import limiter
 from app.core.security.middleware import (
     SecurityHeadersMiddleware,
     RequestLoggingMiddleware,
@@ -33,7 +32,6 @@ app = FastAPI(
 )
 
 # RATE LIMITER
-limiter = Limiter(key_func=get_remote_address)
 app.state.limiter = limiter
 
 @app.exception_handler(RateLimitExceeded)
