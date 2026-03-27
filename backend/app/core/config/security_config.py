@@ -7,7 +7,19 @@ APP_ENV: str = os.getenv("APP_ENV", "development")
 IS_PRODUCTION: bool = APP_ENV == "production"
 
 # JWT Config
-JWT_SECRET_KEY: str = os.getenv("JWT_SECRET_KEY",default=secrets.token_hex(32))
+_jwt_secret = os.getenv("JWT_SECRET_KEY")
+if not _jwt_secret:
+    raise ValueError(
+        "JWT_SECRET_KEY environment variable is not set!\n"
+        "Generate one with: python -c \"import secrets; print(secrets.token_hex(32))\""
+    )
+
+if len(_jwt_secret) < 32:
+    raise ValueError(
+        "JWT_SECRET_KEY is too short! Minimum 32 characters required."
+    )
+
+JWT_SECRET_KEY: str = _jwt_secret
 JWT_ALGORITHM: str = "HS256"
 JWT_ACCESS_TOKEN_EXPIRES_MINUTES: int = int(os.getenv("JWT_EXPIRE_MINUTES", "60"))
 

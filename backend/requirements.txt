@@ -1,18 +1,28 @@
+# Web Framework
 fastapi
 uvicorn[standard]
+
+# Database
 sqlalchemy
-databases[mysql]
+pymysql
+cryptography
+
+# Pydantic
 pydantic
-python-multipart
-passlib[bcrypt]
-python-jose[cryptography]
-aiohttp
-pymongo
-joblib
-python-dotenv
-pytest
-black
-isort
-pydantic_settings
 pydantic[email]
-motor
+pydantic-settings
+
+# Auth & Security
+passlib[bcrypt]
+bcrypt==4.0.1
+python-jose[cryptography]
+
+# Rate Limiting
+slowapi
+
+# Utils
+python-dotenv
+python-multipart
+
+# Testing
+pytest

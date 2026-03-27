@@ -14,7 +14,7 @@ router = APIRouter(prefix="/auth", tags=["Auth"])
 @router.post("/login",response_model=TokenResponse, summary="Login")
 @limiter.limit(RATE_LIMIT_CREATE)
 def login(
-    # request : Request,
+    request : Request,
     payload : LoginRequest,
     db      : Session = Depends(get_db),
 ):

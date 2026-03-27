@@ -45,7 +45,7 @@ def update(
     db      : Session = Depends(get_db),
     _       : dict    = Depends(get_current_user),
 ): 
-    return user_services.update_user(db, payload, user_id)
+    return user_services.update_user(db, user_id, payload)
 
 @router.delete("/{user_id}", summary="Delete user")
 def destroy(
