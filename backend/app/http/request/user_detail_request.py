@@ -19,7 +19,7 @@ class UserDetailCreate(BaseModel):
             raise ValueError("Full name must be at least 2 character")
         return v.strip()
     
-    @field_validator
+    @field_validator("gender")
     @classmethod
     def validate_gender(cls, v):
         if v and v not in ("male", "female"):
@@ -49,7 +49,7 @@ class UserDetailUpdate(BaseModel):
             raise ValueError("Full name must be at least 2 character")
         return v.strip()
     
-    @field_validator
+    @field_validator("gender")
     @classmethod
     def validate_gender(cls, v):
         if v and v not in ("male", "female"):
@@ -78,5 +78,7 @@ class UserDetailResponse(BaseModel):
     created_at  : datetime
     updated_at  : datetime
  
-    model_config = {"from_attributes": True}
+    model_config = {
+        "from_attributes": True
+    }
  
