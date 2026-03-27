@@ -12,13 +12,19 @@ JWT_ALGORITHM: str = "HS256"
 JWT_ACCESS_TOKEN_EXPIRES_MINUTES: int = int(os.getenv("JWT_EXPIRE_MINUTES", "60"))
 
 # CORS Config
-ALLOWED_ORIGINS: List[str] = os.getenv(
-    "ALLOWED_ORIGINS",
-    "http://localhost:3000, http://localhost:8080"
-).split(",")
-
-ALLOWED_HOSTS: List[str] = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
-
+ALLOWED_ORIGINS: List[str] = [
+    o.strip()
+    for o in os.getenv(
+        "ALLOWED_ORIGINS",
+        "http://localhost:3000,http://localhost:8080"
+    ).split(",")
+    if o.strip()
+]
+ALLOWED_HOSTS: List[str] = [
+    h.strip()
+    for h in os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+    if h.strip()
+]
 # Rate Limiting Config
 RATE_LIMIT_CREATE: str = os.getenv("RATE_LIMIT_CREATE", "10/minute")
 RATE_LIMIT_READ: str = os.getenv("RATE_LIMIT_READ", "60/minute")

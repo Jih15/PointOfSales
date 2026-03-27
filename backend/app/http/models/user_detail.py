@@ -21,7 +21,7 @@ class UserDetail(Base):
     role       = Column(Enum(RoleEnum), nullable=False, default=RoleEnum.cashier)
 
     created_at = Column(DateTime(timezone=True), default=now_utc, nullable=False)
-    updatet_at = Column(DateTime(timezone=True), default=now_utc, onupdate=now_utc, nullable=False)
+    updated_at = Column(DateTime(timezone=True), default=now_utc, onupdate=now_utc, nullable=False)
     deleted_at = Column(DateTime(timezone=True), nullable=True, default=None)
 
     # Relasi

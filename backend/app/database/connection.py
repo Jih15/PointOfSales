@@ -1,4 +1,4 @@
-import os 
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base, Session
 
@@ -18,14 +18,17 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
+
 def get_db():
-    db:Session = SessionLocal()
+    db: Session = SessionLocal()
     try:
         yield db
     finally:
         db.close()
 
+
 def init_db():
-    # from app.http.models import Table
+    from app.http.models.user import User           
+    from app.http.models.user_detail import UserDetail  
 
     Base.metadata.create_all(bind=engine)

@@ -31,7 +31,7 @@ class User(Base):
     is_active  = Column(Boolean, default=True, nullable=False)
 
     created_at = Column(DateTime(timezone=True), default=now_utc, nullable=False)
-    updatet_at = Column(DateTime(timezone=True), default=now_utc, onupdate=now_utc, nullable=False)
+    updated_at = Column(DateTime(timezone=True), default=now_utc, onupdate=now_utc, nullable=False)
     deleted_at = Column(DateTime(timezone=True), nullable=True, default=None)
 
     # Relasi
