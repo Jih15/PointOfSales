@@ -7,7 +7,7 @@ from fastapi import Request
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 
-from app.core.security.security_config import SECURITY_HEADERS, MAX_BODY_SIZE_BYTES
+from app.core.config.security_config import SECURITY_HEADERS, MAX_BODY_SIZE_BYTES
 
 # Logger
 logger = logging.getLogger("api")
